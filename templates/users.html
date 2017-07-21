@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+<div class="row">
+    <div class="col-md-4">
+        <div class="row">
+            <div class="col-md-6">
+              <a href="{{url_for('createUser')}}">
+                <span class="glyphicon glyphicon-plus-sign plusIcon"></span>
+              </a>
+            </div>
+            <div class="col-md-6">
+            <form method="GET" action="{{url_for('users')}}">
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-btn">
+                         <button class="btn btn-default" type="button">Go!</button>
+                    </span>
+                    <input name="data" type="text" class="form-control" placeholder="Search for...">
+                </div><!-- /input-group -->
+            </div>
+            </form>
+            </div>
+            </div>
+        </div>
+    <div class="col-md-4">
+        <h3>USERS</h3>
+    </div>
+    <div class="col-md-4">
+        <div class="dropdown show">
+            <a class="btn btn-secondary dropdown-toggle" href="{{url_for('users', page=1,limit=10)}}" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                10
+            </a>
+
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item" href="{{url_for('users', page=1,limit=10)}}">10</a>
+                <a class="dropdown-item" href="{{url_for('users', page=1,limit=15)}}">15</a>
+                <a class="dropdown-item" href="{{url_for('users', page=1,limit=20)}}">20</a>
+              </div>
+        </div>
+    </div>
+</div>
+</div>
+<div class="conteiner">
+  <table class="table table-bordered">
+      <thead>
+      <tr>
+        <th>NAME</th>
+        <th>E-MAIL</th>
+        <th>STATUS</th>
+        <th>ACTION</th>
+      </tr>
+    </thead>
+    <tbody>
+    {%for user in context.users%}
+<tr>
+<th>{{user.userName}}</th>
+<th>{{user.userEmail}}</th>
+<th>{{user.userStatus}}</th>
+<th>
+    <a href="{{url_for('changeUser',id=user.usersID)}}">
+        <i class="glyphicon glyphicon-leaf"></i>
+    </a>
+    <a href="{{url_for('deleteUser',id=user.usersID)}}">
+        <i class="glyphicon glyphicon-trash"></i>
+    </a>
+
+</th>
+</tr>
+{%endfor%}
+    </tbody>
+
+  </table>
+</div>
+</div>
+
+{%endblock%}

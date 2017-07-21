@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="conteiner">
+    <div class="row">
+        <div class="col-md-5">
+        <a href="{{context.referer}}">
+            <i class="glyphicon glyphicon-chevron-left"></i>
+        </a>
+        </div>
+        <div class="col-md-5">
+            <h1>CREATE USER</h1>
+        </div>
+        <div class="col-md-2">
+            {%if context.save%}
+                <p>User ceated successfully</p>
+            {%endif%}
+        </div>
+    </div>
+    <form method="POST" action="{{url_for('createUser')}}">
+  <div class="form-group">
+      {%if err.userName %}
+      {%for e in err.userName %}
+        {{e}}
+      {%endfor%}
+      {%endif%}
+    <label for="exampleInputName">Name</label>
+    <input name="userName" type="name" class="form-control" id="exampleInputName" placeholder="Name">
+  </div>
+  <div class="form-group">
+      {%if err.userEmail %}
+      {%for e in err.userEmail %}
+        {{e}}
+      {%endfor%}
+      {%endif%}
+    <label for="exampleInputEmail">E-mail</label>
+    <input name="userEmail" type="Email" class="form-control" id="exampleInputEmail" placeholder="Email">
+  </div>
+  <div class="form-group">
+      {%if err.userPhone %}
+      {%for e in err.userPhone %}
+        {{e}}
+      {%endfor%}
+      {%endif%}
+    <label for="exampleInputPhone">Phone</label>
+    <input name="userPhone" type="Phone" class="form-control" id="exampleInputPhone" placeholder="Phone">
+  </div>
+  <div class="form-group">
+      {%if err.userMobilePhone %}
+      {%for e in err.userMobilePhone %}
+        {{e}}
+      {%endfor%}
+      {%endif%}
+    <label for="exampleInputMobilePhone">MobilePhone</label>
+    <input name="userMobilePhone" type="MobilePhone" class="form-control" id="exampleInputMobilePhone" placeholder="MobilePhone">
+  </div>
+  <div class="form-group">
+      {%if err.userStatus %}
+      {%for e in err.userStatus %}
+        {{e}}
+      {%endfor%}
+      {%endif%}
+      <label for="Status">Status</label>
+      <select name="userStatus" id="Status" class="form-control">
+        <option value="False">Inactivate</option>
+        <option value="True">Activate</option>
+      </select>
+  </div>
+
+  <button type="submit" class="btn btn-default">Create</button>
+</form>
+</div>
+{%endblock%}

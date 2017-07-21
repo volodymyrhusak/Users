@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test For You</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/nav.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/my_style.css') }}">
+</head>
+<body>
+<div class="navbar-more-overlay"></div>
+	<nav class="navbar navbar-inverse navbar-fixed-top animate">
+		<div class="container">
+			<div class="navbar-header hidden-xs">
+				<a class="navbar-brand" href="{{url_for('base')}}">Test For You</a>
+			</div>
+
+			<ul class="nav navbar-nav navbar-right mobile-bar">
+				<!--<li>-->
+					<!--<a href="#">-->
+						<!--<span class="menu-icon fa fa-home"></span>-->
+						<!--Home-->
+					<!--</a>-->
+				<!--</li>-->
+				<!--<li>-->
+					<!--<a href="#">-->
+						<!--<span class="menu-icon fa fa-info"></span>-->
+						<!--<span class="hidden-xs">Courses</span>-->
+						<!--<span class="visible-xs">Courses</span>-->
+					<!--</a>-->
+				<!--</li>-->
+				<li class="hidden-xs">
+					<a href="{{url_for('courses')}}">
+						<span class="menu-icon fa fa-picture-o"></span>
+						Courses
+					</a>
+				</li>
+				<li>
+					<a href="{{url_for('users', page=1)}}">
+						<span class="menu-icon fa fa-ship"></span>
+						Users
+					</a>
+				</li>
+
+			</ul>
+		</div>
+	</nav>
+
+{% block content %}{% endblock%}
+
+ <!-- jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+<script src="{{ url_for('static', filename='js/nav.js') }}"></script>
+<script src="{{ url_for('static', filename='js/my.js') }}"></script>
+</body>
+</html>
